@@ -1,0 +1,24 @@
+ 
+ssh -i ~/.ssh/samplekeys.pem ubuntu@0.0.0.0 bash -c "'
+sudo apt-get update
+sudo apt-get install curl -y
+gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+\curl -L https://get.rvm.io | bash -s stable --ruby
+source /home/ubuntu/.rvm/scripts/rvm
+rvm get stable --autolibs=enable
+rvm install ruby
+rvm --default use ruby-2.2.0
+sudo apt-get install nodejs -y
+gem update --system
+gem install nokogiri
+gem install rails --version=4.1.0
+sudo apt-get install apache2 -y
+sudo service apache2 restart
+sudo apt-get install git -y
+mkdir workspace
+cd workspace
+git clone https://github.com/ciaranCBbyrne/mymathsapp.git
+cd mathsapp
+bundle install
+nohup rails s &
+'"
