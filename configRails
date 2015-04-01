@@ -20,5 +20,6 @@ cd workspace
 git clone https://github.com/ciaranCBbyrne/mymathsapp.git
 cd mymathsapp
 bundle install
-nohup rails s &
+rake db:migrate
+rails s -d -b 0.0.0.0
 '"
